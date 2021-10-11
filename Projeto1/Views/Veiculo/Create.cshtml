@@ -1,0 +1,68 @@
+﻿@model Projeto1.Models.VeiculoViewModel
+<h1>Novo Veículo</h1>
+<hr />
+@using (Html.BeginForm("Create", "Veiculo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Placa, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Placa,
+                               new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(m => m.Placa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Renavan, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Renavan,
+                               new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(m => m.Renavan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nome, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nome,
+                               new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cpf, new { @class = "control-label col-md-2" })<br/>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Cpf,
+                               new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(m => m.Cpf, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImageUpload, htmlAttributes new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ImageUpload, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ImageUpload, "", new { @class = "text-danger" })
+            <input id="file" name="ImagemFile" type="file" multiple onchange="fileupload('file');" />
+        </div>
+
+        
+
+
+
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar Veículo" class="btn btn-success" />
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+}
+<div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
